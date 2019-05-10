@@ -1,1 +1,1 @@
-Start app with 'npm run server'
+Start app with 'npm run dev'
