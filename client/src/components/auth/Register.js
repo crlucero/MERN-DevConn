@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alertAction';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
   // useState Hook
   // Equal to...
   // state = {
@@ -27,7 +29,7 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('Passwords do not match');
+      setAlert('Passwords do not match', 'danger');
     } else {
       console.log('Registration Successful');
     }
@@ -96,4 +98,13 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired
+};
+
+// When you bring in an action, it must be passed into connect when you want to use it.
+// Connect takes in any state you want to map and object with actions
+export default connect(
+  null,
+  { setAlert }
+)(Register);
