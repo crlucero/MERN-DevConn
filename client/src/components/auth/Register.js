@@ -2,9 +2,10 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
+import { register } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   // useState Hook
   // Equal to...
   // state = {
@@ -31,7 +32,7 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      console.log('Registration Successful');
+      register({ name, email, password });
     }
   };
 
@@ -50,7 +51,6 @@ const Register = ({ setAlert }) => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -60,7 +60,6 @@ const Register = ({ setAlert }) => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required
           />
           <small className="form-text">
             This site uses Gravatar, so if you want an avatar, use a Gravatar
@@ -75,7 +74,6 @@ const Register = ({ setAlert }) => {
             name="password"
             value={password}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -86,7 +84,6 @@ const Register = ({ setAlert }) => {
             name="password2"
             value={password2}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <input type="submit" value="Register" className="btn btn-primary" />
@@ -99,12 +96,13 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
 // When you bring in an action, it must be passed into connect when you want to use it.
 // Connect takes in any state you want to map and object with actions
 export default connect(
   null,
-  { setAlert }
+  { setAlert, register }
 )(Register);
