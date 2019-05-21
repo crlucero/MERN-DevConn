@@ -6,6 +6,8 @@ import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profileAction';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
+import ProfileExp from './ProfileExp';
+import ProfileEdu from './ProfileEdu';
 
 const Profile = ({
   getProfileById,
@@ -23,7 +25,7 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profile" className="btn btn-light">
+          <Link to="/profiles" className="btn btn-light">
             Back to Profiles
           </Link>
           {auth.isAuthenticated &&
@@ -36,6 +38,30 @@ const Profile = ({
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
+            <div className="profile-exp bg-white p-2">
+              <h2 className="text-primary">Experience</h2>
+              {profile.experience.length > 0 ? (
+                <Fragment>
+                  {profile.experience.map(experience => (
+                    <ProfileExp key={experience._id} experience={experience} />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No experience added</h4>
+              )}
+            </div>
+            <div className="profile-edu bg-white p-2">
+              <h2 className="text-primary">Education</h2>
+              {profile.education.length > 0 ? (
+                <Fragment>
+                  {profile.education.map(education => (
+                    <ProfileEdu key={education._id} education={education} />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No education added</h4>
+              )}
+            </div>
           </div>
         </Fragment>
       )}
