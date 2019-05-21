@@ -127,8 +127,7 @@ const CreateProfile = ({ createProfile, history }) => {
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
+            Enter github username to show your 5 most recent repos
           </small>
         </div>
         <div className="form-group">
