@@ -2,5 +2,5 @@
   "mongoURI": "mongodb+srv://cristian123:cristian123@devconnector-geitp.mongodb.net/test?retryWrites=true",
   "jwtSecret": "mytoken",
   "githubClientId": "20e66ad2c07a7b4546b4",
-  "githubClientSecret": "901b35b3043cc373ae39d7019c5abce0b7c3689a"
+  "githubSecret": "901b35b3043cc373ae39d7019c5abce0b7c3689a"
 }
