@@ -8,7 +8,6 @@ const CommentForm = ({ postId, addComment }) => {
 
   return (
     <div class="post-form">
-      <div class="post-form-header bg-primary">Comments</div>
       <form
         class="form my-1"
         onSubmit={e => {
@@ -18,14 +17,15 @@ const CommentForm = ({ postId, addComment }) => {
         }}
       >
         <textarea
-          cols="25"
-          rows="5"
+          cols="10"
+          rows="2"
           placeholder="Leave a comment"
           value={text}
           onChange={e => setText(e.target.value)}
         />
         <input type="submit" value="Submit" class="btn btn-dark my-1" />
       </form>
+      <div class="post-form-header bg-primary">Comments</div>
     </div>
   );
 };
